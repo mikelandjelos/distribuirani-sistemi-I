@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccumulatorOps";
+
+package acumulator_ops;
+
+import "google/protobuf/empty.proto";     // google.protobuf.Empty
+import "google/protobuf/wrappers.proto";  // google.protobuf.StringValue, google.protobuf.Int32Value
+
+// The greeting service definition.
+service AccumulatorOps {
+  // Heartbeat check.
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.StringValue);
+
+  // Get current value of accumulator.
+  rpc GetAccumulatorValue(google.protobuf.Empty) returns (google.protobuf.Int32Value);
+
+  // Performs atomic operation on local accumulator, and returns its current value.
+  rpc PerformOperationUnary(Operation) returns (PerformOperationResponse);
+
+  // Performs multiple operations on local accumulator, and returns its end state. 
+  rpc PerformOperationClientStream(stream Operation) returns (PerformOperationResponse);
+
+  // Performs multiple operations on local accumulator, and returns its state after each one.
+  rpc PerformOperationBiStream(stream Operation) returns (stream PerformOperationResponse);
+}
+
+enum OperationType {
+  NOP = 0;
+  INC = 1;
+  DEC = 2;
+  ADD = 3;
+}
+
+message Operation {
+  OperationType type = 1;
+  optional int32 operand = 2;
+}
+
+message PerformOperationResponse {
+  optional int32 accumulator_value = 1;
+  string message = 2;
+}
