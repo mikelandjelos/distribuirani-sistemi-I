@@ -11,6 +11,12 @@ Implementirati i testirati servis koji u sebi sadrzi prost celobrojni akumulator
 
 > Napomena: na optimalnost lock-ova se nije mnogo obracalo paznje, oni su tu samo reprezentativno, da bi moglo vise klijenata istovremeno da pristupa servisu bez konflikata. Nisu bitni za sam koncept gRPC-a, vec su vise dobra praksa, zato sto je thread-safety nezaobilazna komponenta servera u realnim situacijama.
 
+Implementacija:
+- Link do [proto fajla](./AccumulatorOps/Protos/accumulator_ops.proto);
+- Link do [implementacije servisa](./AccumulatorOps/Services/AccumulatorOps.cs) po protobuf specifikaciji;
+
+---
+
 Sta je bitno da se zna za gRPC:
 
 - kako se pise protobuf specifikacija, poruke (`message`), servisi (`service`) odnosno deklaracije poziva udaljenih metoda (`rpc`);
