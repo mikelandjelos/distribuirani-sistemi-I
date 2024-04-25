@@ -15,7 +15,6 @@ Postavka - moj primer sa callback-om:
 
 ---
 
-
 Sta je bitno da se zna za Java RMI:
 
 [Povratak na pocetnu stranicu](../README.md)
