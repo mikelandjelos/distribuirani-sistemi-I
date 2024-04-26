@@ -11,6 +11,8 @@
     - `IAsyncStreamReader` - kada klijent stream-uje;
     - `IServerStreamWriter` - kada server stream-uje;
     - `MoveNext` i `Current` metode za citanje sledeceg podatka u stream-u;
+    - `WriteAsync` za upisivanje podatka u stream;
+    - 
 
 ---
 
